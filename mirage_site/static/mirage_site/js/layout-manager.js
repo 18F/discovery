@@ -8,7 +8,7 @@ var LayoutManager = {
         Events.subscribe('contentChanged', this.updateResultsInfo);
         Events.subscribe('vehicleChanged', this.enableNaics);
     },
-    
+
     enableNaics: function() {
         $("div#search span.select_text").css('color', 'white');
         $("div#search select").attr("disabled", false);
@@ -85,5 +85,5 @@ LayoutManager.disableFilters = function() {
 LayoutManager.enableFilters = function() {
     $('#choose_filters').removeClass('filter_text_disabled').addClass('filter_text');
     $('.pure-checkbox-disabled').removeClass('pure-checkbox-disabled');
-    $('.se_filter').attr("disabled", false); 
+    $('.se_filter').attr("disabled", false);
 }

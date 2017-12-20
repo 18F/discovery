@@ -1,5 +1,5 @@
 from django.db import models, IntegrityError
-from vendor.models import Naics, Vendor
+from vendors.models import Naics, Vendor
 
 PRICING_CHOICES = (
     ('A', 'Fixed Price Redetermination'),
@@ -47,7 +47,9 @@ REASON_FOR_MODIFICATION_CHOICES = (
 
 
 class FPDSLoad(models.Model):
+    vendor = models.OneToOneField(Vendor, null=True)
     load_date = models.DateField()
+    initialized = models.BooleanField(default=False)
 
 class Contract(models.Model):
 

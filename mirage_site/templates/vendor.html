@@ -60,7 +60,10 @@
                     </table>
                 </div>
             </div><!-- end vendor_socioeconomic_table_container -->
-            <a id="csv_link" href="#"><div id="download_data">download vendor data (CSV)</div></a>
+            <a id="csv_link" href="#"><div id="download_data">Download vendor data (CSV)</div></a>
+            {% if has_capability_statement %}
+                <a href="{% static capability_statement_url %}">Vendor capabilities statement (PDF)</a>
+            {% endif %}
 
         </div><!-- end vendor_admin_c1 -->
 

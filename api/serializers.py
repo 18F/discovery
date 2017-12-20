@@ -1,5 +1,5 @@
 from rest_framework import serializers, pagination
-from vendor.models import Vendor, Pool, Naics, SetAside, SamLoad
+from vendors.models import Vendor, Pool, Naics, SetAside, SamLoad
 from contract.models import Contract, FPDSLoad
 
 class SetAsideSerializer(serializers.ModelSerializer):

@@ -1,0 +1,69 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:2.7
+      - image: circleci/postgres:9.3
+        environment:
+          POSTGRES_DB: circle-test
+          POSTGRES_USER: circleci
+          POSTGRES_PASSWORD: circleci
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - 2-python-dep-{{ checksum "requirements.txt" }}-{{ checksum "requirements-test.txt" }}
+            - 2-python-dep-{{ checksum "requirements.txt" }}
+            - 2-python-dep-
+      - run:
+          name: Install Python dependencies
+          command: |
+            virtualenv venv
+            source venv/bin/activate
+            pip install -r requirements.txt
+            pip install -r requirements-test.txt
+      - save_cache:
+          paths:
+            - ./venv
+          key: 2-python-dep-{{ checksum "requirements.txt" }}-{{ checksum "requirements-test.txt" }}
+
+      - restore_cache:
+          key: 1-phantomjs-2-1-1
+      - run:
+          name: Install PhantomJS dependencies
+          command: |
+            [ -f /usr/local/bin/phantomjs ] || sudo apt-get update
+            [ -f /usr/local/bin/phantomjs ] || sudo apt-get install -y fontconfig wget
+      - run:
+          name: Install PhantomJS
+          command: |
+            [ -f /usr/local/bin/phantomjs ] || wget -O /tmp/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
+            [ -f /usr/local/bin/phantomjs ] || tar -xjf /tmp/phantomjs.tar.bz2 -C /tmp
+            [ -f /usr/local/bin/phantomjs ] || mv /tmp/phantomjs-2.1.1-linux-x86_64/bin/phantomjs venv/bin/phantomjs
+      - save_cache:
+          key: 1-phantomjs-2-1-1
+          paths:
+            - venv/bin/phantomjs
+
+      - run:
+          name: Set CircleCI configuration
+          command: |
+            cp mirage/local_settings.circle.py mirage/local_settings.py
+
+      - run:
+          name: Run tests
+          command: |
+            source venv/bin/activate
+            python manage.py test api vendors contract
+
+      - store_artifacts:
+          path: logs
+          destination: test-reports

@@ -1,0 +1,31 @@
+[
+{
+  "fields": {
+    "cm_name": "Lynna S. Hood",
+    "setasides": [
+      1,
+      2
+    ],
+    "sam_exclusion": false,
+    "name": "Addx Corporation",
+    "number_of_employees": 57,
+    "cm_email": "lhood@addxcorp.com",
+    "pm_email": "jmillward@addxcorp.com",
+    "cm_phone": "571-257-4785",
+    "sam_address": "4900 SEMINARY RD STE 700",
+    "pm_name": "John Millward",
+    "sam_activation_date": "2017-10-16T11:44:12Z",
+    "duns_4": "0398726220000",
+    "pm_phone": "571-236-0477",
+    "annual_revenue": 14812719,
+    "duns": "039872622",
+    "sam_status": "ACTIVE",
+    "cage": "1XPA3",
+    "sam_citystate": "ALEXANDRIA, VA 22311",
+    "sam_url": "http://www.addxcorp.com",
+    "sam_expiration_date": "2018-10-16T11:27:28Z"
+  },
+  "model": "vendors.vendor",
+  "pk": 2024
+}
+]

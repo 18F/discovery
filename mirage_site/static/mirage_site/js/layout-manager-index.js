@@ -7,9 +7,9 @@ LayoutManager.indexInit = function(original) {
     this.disableNaics();
     this.disableFilters();
 };
- 
+
 LayoutManager.originalInit = LayoutManager.init;
- 
+
 LayoutManager.init = function() {
     LayoutManager.indexInit(LayoutManager.originalInit);
 };
@@ -35,6 +35,7 @@ LayoutManager.disableNaics = function() {
 };
 
 LayoutManager.convertDate = function(oldDate) {
+    if (!oldDate) return 'Unknown'
     var dateArray = oldDate.split('-')
     return dateArray[1] + '/' + dateArray[2]+ '/' + dateArray[0]
 }

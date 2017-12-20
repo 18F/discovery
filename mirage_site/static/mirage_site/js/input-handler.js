@@ -31,11 +31,11 @@ var InputHandler = {
             setasides = obj.setasides.split(',');
             len = setasides.length - 1;
 
-            for (i = 0; i < len; i++) {            
+            for (i = 0; i < len; i++) {
                 $('input[value=' + setasides[i] + ']').attr('checked', 'checked');
             }
         }
-        
+
         if(obj.vehicle){
             this.vehicle = obj['vehicle'];
             $('form#vehicle-select select').val(obj['vehicle']);
@@ -43,9 +43,9 @@ var InputHandler = {
     },
 
     sortContracts: function(e) {
-        //if enter pressed or if click then sort 
+        //if enter pressed or if click then sort
         if ((e.type == "keypress" && e.charCode == 13) || e.type == "click") {
-            var $target = $(e.target);    
+            var $target = $(e.target);
             var data = {
                 'naics': this.naicsCode,
                 'listType': 'naics',
@@ -94,12 +94,12 @@ var InputHandler = {
             } else {
                 this.naicsCode = $("#vendor_contract_history_title_container").find("div").first().text().replace("NAICS", '').trim();
             }
-        
+
             //reset date header column classes
             var $date = $("div#ch_table th.h_date_signed");
             $date.removeClass('arrow-sortable').addClass('arrow-down').attr("title", "Sorted descending");
             $date.siblings('.sortable').removeClass('arrow-down').removeClass('arrow-up').addClass('arrow-sortable').attr("title", "Select to sort");
-            
+
             Events.publish('contractsChanged', {'page': 1, 'naics': this.naicsCode, 'listType': listType});
             return false;
         }
@@ -107,7 +107,7 @@ var InputHandler = {
 
     sendVehicleChange: function(e) {
         this.vehicle = $('form#vehicle-select select').val(); //to get the default
-        Events.publish('vehicleChanged', {'vehicle': this.vehicle, 'vehicleOnly': true});       
+        Events.publish('vehicleChanged', {'vehicle': this.vehicle, 'vehicleOnly': true});
     },
 
     sendCodeChange: function(e) {
@@ -143,11 +143,11 @@ var InputHandler = {
             "/api/naics/",
             { format: "json" },
             function( data ) {
-                $.each(data.results, function(key, result) {   
+                $.each(data.results, function(key, result) {
                     $("#naics-code")
                          .append($("<option></option>")
                          .attr("value", result.short_code)
-                         .text(result.short_code + " - " + result.description)); 
+                         .text(result.short_code + " - " + result.description));
                 });
                 //load data if search criteria is defined in querystring
                 if (URLManager.getParameterByName("naics-code") || URLManager.getParameterByName("setasides")) {

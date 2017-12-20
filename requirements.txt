@@ -1,5 +1,5 @@
-django==1.7.6
--e git+https://github.com/18F/pyfpds.git#egg=pyfpds
+django==1.8.18
+-e git+https://github.com/PSHCDevOps/pyfpds.git@integration#egg=pyfpds
 PyYAML==3.11
 boto==2.34.0
 coverage==3.7.1
@@ -12,3 +12,13 @@ requests==2.3.0
 titlecase==0.7.1
 xmltodict==0.9.0
 markdown==2.5.2
+whitenoise==1.0.6  #manages static assets
+dj-database-url==0.3.0 #grabs environment variables and dumps them into a Django settings file
+waitress==0.8.9 #a pure python WSGI server that is a replacement for gunicorn
+django-storages==1.1.8
+psutil==5.4.2
+celery==4.1.0
+celery-once==1.2.0
+redis==2.10.5
+django-celery-beat==1.1.0
+django-celery-results==1.0.1

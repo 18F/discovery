@@ -1,6 +1,7 @@
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'localhost',
         'NAME': 'oasis',
         'USER': 'oasis',
         'PASSWORD': ''
@@ -12,6 +13,14 @@ SAM_API_KEY = ''
 # SECURITY WARNING: keep the secret key used in production secret!
 # change this before deploying to your own server!
 SECRET_KEY = '&%7l9-fvi7_9ykzb*kr1bhjfx%x=(vd0r8z4w#p154eb1o+t=o'
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 SAUCE = False
 SAUCE_USERNAME = ''
@@ -29,4 +38,7 @@ AWS_ACCESS_KEY_ID = ''
 AWS_QUERYSTRING_AUTH = False
 AWS_SECRET_ACCESS_KEY = ''
 AWS_STORAGE_BUCKET_NAME = ''
+
+DEBUG = True
+TEMPLATE_DEBUG = True
 

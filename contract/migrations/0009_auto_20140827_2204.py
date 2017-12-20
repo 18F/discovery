@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('vendor', '0009_auto_20140827_2204'),
+        ('vendors', '0009_auto_20140827_2204'),
         ('contract', '0008_auto_20140826_2038'),
     ]
 
@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('obligated_amount', models.DecimalField(decimal_places=2, null=True, max_digits=128)),
                 ('status', models.CharField(max_length=128, null=True)),
                 ('point_of_contact', models.EmailField(max_length=75, null=True)),
-                ('vendor', models.ForeignKey(to='vendor.Vendor')),
+                ('vendor', models.ForeignKey(to='vendors.Vendor')),
             ],
             options={
             },

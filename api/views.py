@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from contract.models import Contract
-from vendor.models import Vendor, Naics, SetAside, SamLoad, Pool
+from vendors.models import Vendor, Naics, SetAside, SamLoad, Pool
 from api.serializers import VendorSerializer, NaicsSerializer, PoolSerializer, ShortVendorSerializer, ContractSerializer, PaginatedContractSerializer, Metadata, MetadataSerializer, ShortPoolSerializer
 
 

@@ -1,23 +1,25 @@
 # Discovery: OASIS Market Research
-[![Circle CI](https://circleci.com/gh/18F/mirage.png?style=badge)](https://circleci.com/gh/18F/mirage)
+[![CircleCI](https://circleci.com/gh/PSHCDevOps/discovery/tree/master.svg?style=svg)](https://circleci.com/gh/PSHCDevOps/discovery/tree/master)
 
 Welcome to the wonderful world of procurement, a mechanism by which the government buys goods and services from the private sector. The procurement process is made up of several stages, one of the earliest being market research. Market Research is an attempt to predict what qualified bidders your solicitation for goods or services will attract. It helps acquisition personnel make decisions regarding various aspects of their particular procurement. Ideally, a solicitation should be structured so that it attracts a enough experienced bidders to be truly competitive.
 
 After researching the marketplace, procurement officers may decide to break their solicitation up into smaller chunks, or choose one vehicle or schedule over another. Procurement vehicles and schedules are large umbrella contracts, with a set of vendors that have "pre-competed" for work in a general category. Discovery was developed to serve the [OASIS family of  vehicles](http://www.gsa.gov/portal/content/161367), which has many vendors capable of providing integrated professional services. OASIS is actually two vehicles, OASIS SB, which includes small businesses only, and OASIS unrestricted, which includes a wider array of vendors.
 
-Discovery is currently nearing our first release, or our minimum viable product. We are still actively soliciting suggestions and user feedback. You can file issues on this repo, or you can check out our [Trello board](https://trello.com/b/ZcWTRSP9/mirage), which contains our product backlog to see what we have planned in the future.
+Discovery is live at (https://discovery.gsa.gov). You can file issues on this repo, or you can check out our [Trello board](https://trello.com/b/AEoWtET7/discovery-20), which contains our product backlog to see what we have planned in the future.
 
 Currently, Discovery makes use of vendor information from the System for Award Management (SAM) and historical contract information the Federal Procurement Data System (FPDS). There are a few management commands that load the initial data, but we also provide a SQL dump since the loading of data from FPDS for the past decade can take several hours.
 
-This project is in the very early stages. Right now it's a basic Django project. You can get started by:
+This project uses [Django](https://www.djangoproject.com/), a Python framework. You can get started by:
 
  * Installing PostgreSQL (installation guides [here](https://wiki.postgresql.org/wiki/Detailed_installation_guides))
  * Installing virtualenv and creating a virtual environment ([hitchhiker's guide to virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/))
  * Installing the python requirements with ```pip install -r requirements.txt```
+
  * Creating a postgresql database and storing the settings in a ```local_settings.py``` file, a sibling of ```settings.py```
- * Run ```manage.py syncdb```
+ * Run ```manage.py migrate``` to set up the database and ```manage.py createcachetable``` to set up caching
+
  * Loading a [SQL dump](https://s3.amazonaws.com/mirage-gsa-gov/discovery.sql.gz) to get some data into the project
- * Run `manage.py runserver` to start the server
+ * Run `manage.py runserver` to start the server. Optionally specify a host and port to serve on. For example `0.0.0.0:8888`
 
 ## Requirements
 
@@ -36,7 +38,9 @@ Make sure to load naics.json, pools.json, and setasides.json (in that order).
 
 Now you can run the ```load_vendors``` manage command. This loads in the vendors on OASIS (included in the repo on several CSVs that are grouped by pool), and fetches extra information about the vendors from SAM.
 
-```manage.py load_vendors```
+```
+manage.py load_vendors
+```
 
 Note that this manage command requires you to specify a ```SAM_API_KEY``` variable in your local settings file as shown in local_settings.example.py. This value should be a valid [Data.gov API key](https://api.data.gov/signup/). Left to its own devices, the loader runs slightly faster than the rate limiting on api.data.gov, so there is a sleep statement in the loader to keep it in check.
 
@@ -54,20 +58,58 @@ Once you've loaded the basic data, you'll need to load the contract history reco
 
 Currently the `load_fpds` command is configured to load ten years of contract history for each vendor so it takes some time (potentiall several hours). However, upon each successful run, a load object with the date and time is stored. Upon subsequent runs, the loader will only load contracts that have been created or modified since the last load date. You can also pass in parameters to modify the loader.
 
-```./manage.py --load_all ```
+```
+./manage.py --load_all
+```
 The --load_all flag forces a load of all contracts, regardless of last load date
 
-``` ./manage.py --id=ID  ```
+```
+ ./manage.py --id=ID
+ ```
 The --id parameter only loads contractors for vendors with an id greater than or equal to ID, where ID is the vendor's id in the vendor table. Contracts are loaded in order of vendor id.
+
+## Deploying to cloud.gov
+
+If the app does not yet exist in the target space, first create it:
+
+```
+cf push -f manifest.yml --no-start
+```
+
+Next, create and bind a database to the application:
+
+```
+cf create-service aws-rds shared-psql discovery-db
+cf bind-service acquisitions-staging discovery-db
+```
+
+Set some necessary environment variables:
+```
+cf set-env discovery-prod SAM_API_KEY [an api.data.gov key]
+cf set-env discovery-prod SECRET_KEY [a secret key]
+cf set-env discovery-prod API_HOST ""
+```
+
+Now, get the app up and running:
+```
+cf push -f manifest.yml
+```
+
+To load some data, SSH into the application using `cf ssh discovery-prod` and follow the instructions above. See the cloud.gov documentation for [additional information about working with databases](https://cloud.gov/docs/services/relational-database/).
 
 ## Static Assets
 Assets can be loaded locally, or from an S3 bucket. The default settings in settings.py and local_settings.example.py are set to force local assets to be loaded. To use S3, update the AWS settings in the local_settings.py file, and uncomment the `DEFAULT_FILE_STORAGE` and `STATICFILES_STORAGE` lines.
 
 ## Testing
 The tests can be run using Django's built in testing infrastructure:
-```./manage.py test ```
+```
+./manage.py test
+```
 
 You can test specific apps by passing in the app name to the testing command. Valid values are `api`, `vendor`, `contract`, `selenium_tests` (requires additional setup).
+
+### Deploying
+See [deploy.sh](https://github.com/18F/discovery/blob/master/deploy.sh).
 
 ### Selenium testing
 #### Locally with PhantomJS

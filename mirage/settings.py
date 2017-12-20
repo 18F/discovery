@@ -11,9 +11,14 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import markdown
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+try:
+    SECRET_KEY = os.environ['SECRET_KEY']
+except:
+    pass #it will be set by local settings
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -32,16 +37,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages"
 )
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'mirage_site/templates'),
 
 )
 ALLOWED_HOSTS = [
-    '.gsa.gov',
-    '127.0.0.1', 
-    '.18f.us',
-    'localhost',
+    '*',
 ]
 
 
@@ -55,16 +57,17 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'storages',
+    'selenium_tests',
     'rest_framework',
+    'rest_framework_swagger',
+    'django_celery_beat',
+    'django_celery_results',
 
     'api',
     'mirage_site',
-    'vendor',
+    'vendors',
     'contract',
-    'selenium_tests',
-    'rest_framework_swagger',
-    'storages',
-
 )
 
 MIDDLEWARE_CLASSES = (
@@ -83,7 +86,8 @@ WSGI_APPLICATION = 'mirage.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config()
 
 
 # Internationalization
@@ -105,13 +109,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 
 #project specific
 VEHICLES = ('oasissb', 'oasis')
 
 SAM_API_URL = "https://api.data.gov/sam/v1/registrations/"
-USASPENDING_API_URL = "http://www.usaspending.gov/fpds/fpds.php"
 
 CACHES = {
     'default': {
@@ -131,6 +136,10 @@ LOGGING = {
         'simple': {
             'format': '%(levelname)s %(message)s'
         },
+        'csv': {
+            'format' : '"%(asctime)s","%(levelname)s",%(message)s',
+            'datefmt' : "%Y-%m-%d %H:%M:%S"
+        }
     },
     'handlers': {
         'file': {
@@ -145,11 +154,23 @@ LOGGING = {
             'filename': os.path.join(BASE_DIR, 'logs/vendor.log'),
             'formatter': 'verbose'
         },
-        'sam_file': {
-            'level': 'DEBUG',
+        'vendor_memory_file': {
+            'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs/sam.log'),
-            'formatter': 'verbose'
+            'filename': os.path.join(BASE_DIR, 'logs/vendor_memory.csv'),
+            'formatter': 'csv'
+        },
+        'vendor_data_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/vendor_data.csv'),
+            'formatter': 'csv'
+        },
+        'sam_data_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/sam_data.csv'),
+            'formatter': 'csv'
         },
         'fpds_file': {
             'level': 'DEBUG',
@@ -157,33 +178,66 @@ LOGGING = {
             'filename': os.path.join(BASE_DIR, 'logs/fpds.log'),
             'formatter': 'verbose'
         },
+        'fpds_memory_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/fpds_memory.csv'),
+            'formatter': 'csv'
+        },
+        'fpds_data_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/fpds_data.csv'),
+            'formatter': 'csv'
+        }
     },
     'loggers': {
         'django': {
             'handlers':['file'],
             'propagate': True,
-            'level':'DEBUG',
+            'level':'DEBUG'
         },
-        'vendors': {
+        'vendor': {
             'handlers': ['vendor_file'],
-            'level': 'DEBUG',
+            'level': 'DEBUG'
         },
-        'sam': {
-            'handlers': ['sam_file'],
-            'level': 'DEBUG',
+        'vendor_memory': {
+            'handlers': ['vendor_memory_file'],
+            'level': 'INFO'
+        },
+        'vendor_data': {
+            'handlers': ['vendor_data_file'],
+            'level': 'INFO'
+        },
+        'sam_data': {
+            'handlers': ['sam_data_file'],
+            'level': 'INFO'
         },
         'fpds': {
             'handlers': ['fpds_file'],
-            'level': 'DEBUG',
+            'level': 'DEBUG'
         },
-
+        'fpds_memory': {
+            'handlers': ['fpds_memory_file'],
+            'level': 'INFO'
+        },
+        'fpds_data': {
+            'handlers': ['fpds_data_file'],
+            'level': 'INFO'
+        }
     },
 }
+
 
 try:
     from mirage.local_settings import *
 except:
     pass
+
+
+if 'API_HOST' not in locals(): API_HOST = os.getenv('API_HOST')
+if 'API_KEY' not in locals(): API_KEY = os.getenv('API_KEY')
+if 'SAM_API_KEY' not in locals(): SAM_API_KEY = os.getenv('SAM_API_KEY')
 
 SWAGGER_SETTINGS = {
     "doc_expansion": "full",
@@ -214,5 +268,3 @@ It must be passed in the `api_key` parameter with each request.
     },
     "template_path": "api_theme/index.html",
 }
-
-

@@ -1,0 +1,254 @@
+[
+{
+  "fields": {
+    "vendor": 2024,
+    "piid": "GS00Q14OADS301",
+    "pool": "3_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4765
+},
+{
+  "fields": {
+    "vendor": 2025,
+    "piid": "GS00Q14OADS302",
+    "pool": "3_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4766
+},
+{
+  "fields": {
+    "vendor": 2026,
+    "piid": "GS00Q14OADS101",
+    "pool": "1_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4767
+},
+{
+  "fields": {
+    "vendor": 2027,
+    "piid": "GS00Q14OADS102",
+    "pool": "1_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4768
+},
+{
+  "fields": {
+    "vendor": 2028,
+    "piid": "GS00Q14OADS501",
+    "pool": "5A_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4769
+},
+{
+  "fields": {
+    "vendor": 2029,
+    "piid": "GS00Q14OADS523",
+    "pool": "5A_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4770
+},
+{
+  "fields": {
+    "vendor": 2030,
+    "piid": "GS00Q14OADS438",
+    "pool": "4_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4771
+},
+{
+  "fields": {
+    "vendor": 2031,
+    "piid": "GS00Q14OADS401",
+    "pool": "4_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4772
+},
+{
+  "fields": {
+    "vendor": 2024,
+    "piid": "GS00Q14OADS201",
+    "pool": "2_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4773
+},
+{
+  "fields": {
+    "vendor": 2032,
+    "piid": "GS00Q14OADS202",
+    "pool": "2_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4774
+},
+{
+  "fields": {
+    "vendor": 2030,
+    "piid": "GS00Q14OADS620",
+    "pool": "5B_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4775
+},
+{
+  "fields": {
+    "vendor": 2028,
+    "piid": "GS00Q14OADS601",
+    "pool": "5B_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4776
+},
+{
+  "fields": {
+    "vendor": 2030,
+    "piid": "GS00Q14OADS736",
+    "pool": "6_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4777
+},
+{
+  "fields": {
+    "vendor": 2028,
+    "piid": "GS00Q14OADS701",
+    "pool": "6_SB"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4778
+},
+{
+  "fields": {
+    "vendor": 2033,
+    "piid": "GS00Q14OADU301",
+    "pool": "3_UE"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4779
+},
+{
+  "fields": {
+    "vendor": 2034,
+    "piid": "GS00Q14OADU303",
+    "pool": "3_UE"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4780
+},
+{
+  "fields": {
+    "vendor": 2033,
+    "piid": "GS00Q14OADU101",
+    "pool": "1_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4781
+},
+{
+  "fields": {
+    "vendor": 2035,
+    "piid": "GS00Q14OADU136",
+    "pool": "1_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4782
+},
+{
+  "fields": {
+    "vendor": 2036,
+    "piid": "GS00Q14OADU501",
+    "pool": "5A_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4783
+},
+{
+  "fields": {
+    "vendor": 2037,
+    "piid": "GS00Q14OADU503",
+    "pool": "5A_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4784
+},
+{
+  "fields": {
+    "vendor": 2034,
+    "piid": "GS00Q14OADU401",
+    "pool": "4_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4785
+},
+{
+  "fields": {
+    "vendor": 2038,
+    "piid": "GS00Q14OADU442",
+    "pool": "4_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4786
+},
+{
+  "fields": {
+    "vendor": 2033,
+    "piid": "GS00Q14OADU202",
+    "pool": "2_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4787
+},
+{
+  "fields": {
+    "vendor": 2039,
+    "piid": "GS00Q14OADU201",
+    "pool": "2_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4788
+},
+{
+  "fields": {
+    "vendor": 2036,
+    "piid": "GS00Q14OADU601",
+    "pool": "5B_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4789
+},
+{
+  "fields": {
+    "vendor": 2039,
+    "piid": "GS00Q14OADU602",
+    "pool": "5B_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4790
+},
+{
+  "fields": {
+    "vendor": 2036,
+    "piid": "GS00Q14OADU701",
+    "pool": "6_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4791
+},
+{
+  "fields": {
+    "vendor": 2037,
+    "piid": "GS00Q14OADU703",
+    "pool": "6_UR"
+  },
+  "model": "vendors.poolpiid",
+  "pk": 4792
+}
+]

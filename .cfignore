@@ -1,0 +1,15 @@
+pyfpds
+*.swp
+local_settings.py
+*.pyc
+venv
+*.DS_Store
+**.log
+logs/*.log
+.vagrant/
+mirage_venv/
+src/
+mvenv/
+.coverage
+*.sql
+*.sql.gz

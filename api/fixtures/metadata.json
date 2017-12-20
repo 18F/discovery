@@ -1,1 +1,249 @@
-[{"fields": {"load_date": "2014-10-02"}, "pk": 1, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-02"}, "pk": 2, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 3, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 4, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 5, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 6, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 7, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 8, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 9, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 10, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 11, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 12, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 13, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 14, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-23"}, "pk": 15, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-24"}, "pk": 16, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-24"}, "pk": 17, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-24"}, "pk": 18, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-24"}, "pk": 19, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-24"}, "pk": 20, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-25"}, "pk": 21, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-25"}, "pk": 22, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-25"}, "pk": 23, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-25"}, "pk": 24, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-25"}, "pk": 25, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-27"}, "pk": 26, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-28"}, "pk": 27, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-28"}, "pk": 28, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-28"}, "pk": 29, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-28"}, "pk": 30, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-28"}, "pk": 31, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-28"}, "pk": 32, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-28"}, "pk": 33, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-28"}, "pk": 34, "model": "contract.fpdsload"}, {"fields": {"load_date": "2014-10-29"}, "pk": 35, "model": "contract.fpdsload"}, {"fields": {"sam_load": "2014-09-30"}, "pk": 1, "model": "vendor.samload"}, {"fields": {"sam_load": "2014-10-02"}, "pk": 2, "model": "vendor.samload"}, {"fields": {"sam_load": "2014-10-02"}, "pk": 3, "model": "vendor.samload"}, {"fields": {"sam_load": "2014-10-02"}, "pk": 4, "model": "vendor.samload"}, {"fields": {"sam_load": "2014-10-02"}, "pk": 5, "model": "vendor.samload"}, {"fields": {"sam_load": "2014-11-03"}, "pk": 6, "model": "vendor.samload"}]
+[
+  {
+    "fields": {
+      "load_date": "2014-10-02"
+    },
+    "pk": 1,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-02"
+    },
+    "pk": 2,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 3,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 4,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 5,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 6,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 7,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 8,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 9,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 10,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 11,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 12,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 13,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 14,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-23"
+    },
+    "pk": 15,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-24"
+    },
+    "pk": 16,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-24"
+    },
+    "pk": 17,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-24"
+    },
+    "pk": 18,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-24"
+    },
+    "pk": 19,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-24"
+    },
+    "pk": 20,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-25"
+    },
+    "pk": 21,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-25"
+    },
+    "pk": 22,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-25"
+    },
+    "pk": 23,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-25"
+    },
+    "pk": 24,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-25"
+    },
+    "pk": 25,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-27"
+    },
+    "pk": 26,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-28"
+    },
+    "pk": 27,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-28"
+    },
+    "pk": 28,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-28"
+    },
+    "pk": 29,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-28"
+    },
+    "pk": 30,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-28"
+    },
+    "pk": 31,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-28"
+    },
+    "pk": 32,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-28"
+    },
+    "pk": 33,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-28"
+    },
+    "pk": 34,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "load_date": "2014-10-29"
+    },
+    "pk": 35,
+    "model": "contract.fpdsload"
+  }, {
+    "fields": {
+      "sam_load": "2014-09-30"
+    },
+    "pk": 1,
+    "model": "vendors.samload"
+  }, {
+    "fields": {
+      "sam_load": "2014-10-02"
+    },
+    "pk": 2,
+    "model": "vendors.samload"
+  }, {
+    "fields": {
+      "sam_load": "2014-10-02"
+    },
+    "pk": 3,
+    "model": "vendors.samload"
+  }, {
+    "fields": {
+      "sam_load": "2014-10-02"
+    },
+    "pk": 4,
+    "model": "vendors.samload"
+  }, {
+    "fields": {
+      "sam_load": "2014-10-02"
+    },
+    "pk": 5,
+    "model": "vendors.samload"
+  }, {
+    "fields": {
+      "sam_load": "2014-11-03"
+    },
+    "pk": 6,
+    "model": "vendors.samload"
+  }
+]

@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('vendor', '0010_auto_20140828_2124'),
+        ('vendors', '0010_auto_20140828_2124'),
         ('contract', '0009_auto_20140827_2204'),
     ]
 
@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('PSC', models.CharField(max_length=128, null=True)),
                 ('record_type', models.CharField(max_length=128, null=True)),
                 ('record_code', models.CharField(max_length=1, null=True)),
-                ('vendor', models.ForeignKey(to='vendor.Vendor', null=True)),
+                ('vendor', models.ForeignKey(to='vendors.Vendor', null=True)),
             ],
             options={
             },

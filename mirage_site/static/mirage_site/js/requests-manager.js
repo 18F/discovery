@@ -11,7 +11,7 @@ var RequestsManager = {
 
 
     getAPIRequest: function(url, params, callback) {
-        url = APIHOST + url;
+        url = (APIHOST == 'None' ? '' : APIHOST) + url;
         params['api_key'] = APIKEY;
         return $.ajax({
               url: url,
@@ -52,7 +52,7 @@ var RequestsManager = {
 
     getPool: function() {
         var poolInfo = URLManager.getPoolInfo();
-        
+
         if (poolInfo !== null){
             if (poolInfo['vehicle'] == 'oasissb'){
                 return [poolInfo['pool_number'] + '_' + 'SB', poolInfo['vehicle']];
@@ -62,7 +62,7 @@ var RequestsManager = {
             }
         }
         else {
-            return null 
+            return null
         }
     }
 

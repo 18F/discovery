@@ -1,3 +1,0 @@
-
--e git+https://github.com/jschneier/django-storages.git#egg=django-storages
-

@@ -1,0 +1,38 @@
+---
+applications:
+- name: discovery-test
+  host: disc-test
+  path: .
+  buildpack: https://github.com/cloudfoundry/python-buildpack
+  command: python manage.py migrate --noinput && python manage.py createcachetable && python manage.py collectstatic --noinput && waitress-serve --expose-tracebacks --port=$PORT mirage.wsgi:application
+  instances: 1
+  memory: 128M
+  disk_quota: 1G
+  timeout: 180
+  services:
+    - discovery-db
+    - discovery-redis
+- name: discovery-celery
+  path: .
+  no-route: true
+  buildpack: https://github.com/cloudfoundry/python-buildpack
+  command: python manage.py runserver --insecure 0.0.0.0:$PORT & celery -A mirage worker --loglevel=info --concurrency=1
+  instances: 1
+  memory: 832M
+  disk_quota: 1G
+  timeout: 180
+  services:
+    - discovery-db
+    - discovery-redis
+- name: discovery-celery-beat
+  path: .
+  no-route: true
+  buildpack: https://github.com/cloudfoundry/python-buildpack
+  command: python manage.py runserver --insecure 0.0.0.0:$PORT & celery -A mirage beat --loglevel=info
+  instances: 1
+  memory: 64M
+  disk_quota: 1G
+  timeout: 180
+  services:
+    - discovery-db
+    - discovery-redis

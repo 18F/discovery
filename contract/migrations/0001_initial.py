@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('vendor', '__first__'),
+        ('vendors', '__first__'),
     ]
 
     operations = [
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('obligated_amount', models.DecimalField(max_digits=128, null=True, decimal_places=2)),
                 ('last_modified_by', models.EmailField(null=True, max_length=75)),
                 ('PSC', models.CharField(null=True, max_length=128)),
-                ('NAICS', models.ForeignKey(to='vendor.Naics', null=True)),
+                ('NAICS', models.ForeignKey(to='vendors.Naics', null=True)),
             ],
             options={
             },
